@@ -19,7 +19,7 @@
     "prestart": "yarn run build",
     "start": "node dist/server/server.js",
     "start:dev": "nodemon",
-    "test": "npm-run-all test:server",
+    "test": "npm-run-all db:reset db:migrate test:server",
     "test:server": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --opts ./mocha.opts"
   },
   "dependencies": {
