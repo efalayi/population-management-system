@@ -12,6 +12,8 @@
     "build:server": "babel --root-mode upward server -d dist/server",
     "build:dev:server": "babel-node server/server.js",
     "coverage": "nyc report --reporter=text-lcov | ./node_modules/coveralls/bin/coveralls.js",
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "db:reset": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "lint": "./node_modules/.bin/eslint './**/*.js'",
     "prebuild": "rimraf dist && mkdir dist",
     "prestart": "yarn run build",
