@@ -11,6 +11,10 @@ cache:
   yarn: true
 install:
   - yarn
+before_script:
+  - psql -c 'create database pms_db_test;' -U postgres
+  - yarn run db:reset
+  - yarn run db:migrate
 script:
   - ./node_modules/.bin/nyc ./node_modules/.bin/mocha --require @babel/register --recursive ./server/**/*.test.js --reporter mocha-junit-reporter --reporter-options mochaFile=reports/mocha/test-results.xml --exit
 after_success:
