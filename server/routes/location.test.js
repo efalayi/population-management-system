@@ -101,6 +101,16 @@ describe('Locations endpoints', () => {
           done()
         })
     })
+    it('should return an error if locaionId is not a string', (done) => {
+      server
+        .get('/api/v1/locations/-1234')
+        .end((error, response) => {
+          expect(response.status).to.equal(400)
+          expect(response.body).not.to.have.property('location')
+          expect(response.body.message).to.equal('LocationId should be a string')
+          done()
+        })
+    })
     it('should return location details if location exists', (done) => {
       const [location1] = createdLocations
       server
@@ -140,19 +150,19 @@ describe('Locations endpoints', () => {
           done()
         })
     })
-    it('should return updated locaton details if location update is valid', (done) => {
+    it('should return updated location details if location update is valid', (done) => {
       const [, location2] = createdLocations
       server
         .put(`/api/v1/locations/${location2.id}`)
         .send({
           name: 'Update',
           numberOfFemales: 10,
-          numberOfMales: 10
+          numberOfMales: 35
         })
         .end((error, response) => {
           expect(response.status).to.equal(200)
           expect(response.body).to.have.property('location')
-          expect(response.body.location).to.have.property('totalResidents', 20)
+          expect(response.body.location).to.have.property('totalResidents', 45)
           done()
         })
     })
@@ -165,6 +175,16 @@ describe('Locations endpoints', () => {
         .end((error, response) => {
           expect(response.status).to.equal(404)
           expect(response.body).to.have.property('message', 'invalidId does not exist')
+          done()
+        })
+    })
+    it('should return an error if locaionId is not a string', (done) => {
+      server
+        .get('/api/v1/locations/-1234')
+        .end((error, response) => {
+          expect(response.status).to.equal(400)
+          expect(response.body).not.to.have.property('location')
+          expect(response.body.message).to.equal('LocationId should be a string')
           done()
         })
     })
