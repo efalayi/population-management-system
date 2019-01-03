@@ -1,15 +1,26 @@
 {
   "root": true,
   "env": {
-    "node": true,
-    "mocha": true
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "mocha": true,
+    "node": true
   },
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb",
+    "eslint:recommended"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "sourceType": "module"
   },
   "plugins": [
+    "react",
+    "jsx-a11y",
     "import"
   ],
   "rules": {
@@ -37,6 +48,16 @@
         "enforceForRenamedProperties": false
       }
     ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/button-has-type": "off",
     "semi": [
       "error",
       "never"
