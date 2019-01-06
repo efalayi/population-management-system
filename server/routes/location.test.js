@@ -21,9 +21,9 @@ describe('Locations endpoints', () => {
           const { errors } = response.body
           expect(response.status).to.equal(400)
           expect(errors).not.to.undefined
-          expect(errors).to.have.property('name', 'name is required')
-          expect(errors).to.have.property('numberOfFemales', 'numberOfFemales is required')
-          expect(errors).to.have.property('numberOfMales', 'numberOfMales is required')
+          expect(errors).to.have.property('name', 'Field is required')
+          expect(errors).to.have.property('numberOfFemales', 'Field is required')
+          expect(errors).to.have.property('numberOfMales', 'Field is required')
           done()
         })
     })

@@ -7,11 +7,16 @@ const babelConfig = {
         }
       },
     ],
-
+    [
+      '@babel/preset-react',
+      {
+        development: process.env.BABEL_ENV === 'development',
+      },
+    ],
   ],
-  // plugins: [
-  //   '@babel/plugin-proposal-class-properties'
-  // ],
+  plugins: [
+    '@babel/plugin-proposal-class-properties'
+  ],
   ignore: [
     'node_modules',
   ]

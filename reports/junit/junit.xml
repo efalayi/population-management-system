@@ -1,0 +1,12 @@
+<testsuites name="jest tests" tests="3" failures="0" time="4.605">
+  <testsuite name="#AppHeader" errors="0" failures="0" skipped="0" timestamp="2019-01-04T13:33:48" time="1.476" tests="2">
+    <testcase classname="#AppHeader should match snapshot" name="#AppHeader should match snapshot" time="0.022">
+    </testcase>
+    <testcase classname="#AppHeader should match snapshot" name="#AppHeader should match snapshot" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="#Root" errors="0" failures="0" skipped="0" timestamp="2019-01-04T13:33:50" time="0.07" tests="1">
+    <testcase classname="#Root should mount without errors" name="#Root should mount without errors" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>
