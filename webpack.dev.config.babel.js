@@ -36,7 +36,8 @@ export default {
     port: PORT,
     proxy: {
       '/api': API_URL
-    }
+    },
+    historyApiFallback: true
   },
   module: {
     rules: [
