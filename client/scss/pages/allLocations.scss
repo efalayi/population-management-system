@@ -1,6 +1,7 @@
 .locations {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
   .location {
     width: 300px;

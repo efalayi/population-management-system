@@ -13,7 +13,7 @@ const validations = (field, fieldValue) => ({
 
 const isValidLocationField = (field, fieldValue) => {
   if (!fieldValue) {
-    return `${field} is required`
+    return 'Field is required'
   }
   return validations(field, fieldValue)[field]
 }
