@@ -29,9 +29,38 @@ class AllLocations extends Component {
     ))
   }
 
+  renderLocations = () => {
+    const { locations } = this.state
+    if (locations.length === 0) {
+      return (
+        <div>
+          No Locations Found
+        </div>
+      )
+    }
+    return (
+      <div className="locations">
+        {
+          locations.map(location => {
+            return (
+              <Location
+                key={location.id}
+                name={location.name}
+                numberOfFemales={location.numberOfFemales}
+                numberOfMales={location.numberOfMales}
+                subLocations={location.subLocations}
+                totalResidents={location.totalResidents}
+              />
+            )
+          })
+        }
+      </div>
+    )
+  }
+
   render() {
     const { classes } = this.props
-    const { isLoading, locations } = this.state
+    const { isLoading } = this.state
     if (isLoading) {
       return <AppLoader classes={classes} />
     }
@@ -40,23 +69,7 @@ class AllLocations extends Component {
         <PageTitle
           title="All Locations"
         />
-        <div className="locations">
-
-          {
-            locations.map(location => {
-              return (
-                <Location
-                  key={location.id}
-                  name={location.name}
-                  numberOfFemales={location.numberOfFemales}
-                  numberOfMales={location.numberOfMales}
-                  subLocations={location.subLocations}
-                  totalResidents={location.totalResidents}
-                />
-              )
-            })
-          }
-        </div>
+        { this.renderLocations() }
       </div>
     )
   }
