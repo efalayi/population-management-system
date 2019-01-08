@@ -7,7 +7,7 @@
   "author": "Esther Falayi <esther.falayi@andela.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm-run-all build:config build:constants build:db build:server build:client",
+    "build": "npm-run-all clean:dist build:config build:constants build:db build:server build:client",
     "build:client": "./node_modules/.bin/webpack --config webpack.prod.config.babel.js",
     "build:config": "babel --root-mode upward config -d dist/config",
     "build:constants": "babel --root-mode upward constants -d dist/constants",
@@ -21,7 +21,6 @@
     "db:reset": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "lint": "./node_modules/.bin/eslint './**/*.js'",
     "postinstall": "npm-run-all db:migrate build",
-    "prebuild": "yarn run clean:dist",
     "prestart": "yarn run build",
     "start": "node dist/server/server.js",
     "start:api:dev": "nodemon",

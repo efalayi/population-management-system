@@ -78,7 +78,7 @@ class CreateNewLocation extends PureComponent {
   render() {
     const { errors, location, toasterProps } = this.state
     return (
-      <div>
+      <div className="page__container">
         <PageTitle
           title="Create a Location"
         />

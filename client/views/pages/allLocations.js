@@ -65,7 +65,7 @@ class AllLocations extends Component {
       return <AppLoader classes={classes} />
     }
     return (
-      <div>
+      <div className="page__container">
         <PageTitle
           title="All Locations"
         />
