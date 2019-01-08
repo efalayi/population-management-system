@@ -7,7 +7,7 @@
   "author": "Esther Falayi <esther.falayi@andela.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm-run-all build:config build:constants build:db build:server build:client",
+    "build": "npm-run-all clean:dist build:config build:constants build:db build:server build:client",
     "build:client": "./node_modules/.bin/webpack --config webpack.prod.config.babel.js",
     "build:config": "babel --root-mode upward config -d dist/config",
     "build:constants": "babel --root-mode upward constants -d dist/constants",
@@ -20,7 +20,7 @@
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:reset": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "lint": "./node_modules/.bin/eslint './**/*.js'",
-    "prebuild": "yarn run clean:dist",
+    "postinstall": "npm-run-all db:migrate build",
     "prestart": "yarn run build",
     "start": "node dist/server/server.js",
     "start:api:dev": "nodemon",
@@ -31,10 +31,15 @@
     "test:server": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --opts ./mocha.opts"
   },
   "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@material-ui/core": "^3.8.1",
     "@material-ui/icons": "^3.0.1",
+    "babel-core": "^7.0.0-bridge",
     "babel-loader": "^8.0.4",
     "body-parser": "^1.18.3",
     "chalk": "2.4.0",
@@ -66,11 +71,6 @@
     "whatwg-fetch": "2.0.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "babel-core": "^7.0.0-bridge",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "chai": "^4.2.0",
