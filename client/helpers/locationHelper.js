@@ -10,6 +10,7 @@ const buildLocationUpdateData = (previousLocationData, locationUpdateData) => {
   return locationUpdate
 }
 
+
 const convertSubLocationsArrayToString = (location) => {
   const locationUpdateData = Object.assign({}, location)
   const subLocations = locationUpdateData.subLocations.map((subLocation) => {
@@ -19,7 +20,15 @@ const convertSubLocationsArrayToString = (location) => {
   return locationUpdateData
 }
 
+const getSubLocationsString = (subLocations) => {
+  const subLocationNames = subLocations.map((subLocation) => {
+    return subLocation.name
+  })
+  return subLocationNames.join(', ')
+}
+
 export default {
   buildLocationUpdateData,
-  convertSubLocationsArrayToString
+  convertSubLocationsArrayToString,
+  getSubLocationsString
 }

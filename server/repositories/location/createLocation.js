@@ -16,14 +16,15 @@ const createLocation = async (db, newLocation) => {
   } = newLocation
   try {
     const locationId = pushId()
+    const locationName = name.trim()
     const totalResidents = calculateTotalResidents(numberOfFemales, numberOfMales)
     const [location, created] = await db.Location.findOrCreate({
       where: {
-        name
+        name: locationName
       },
       defaults: {
         id: locationId,
-        name: name.trim(),
+        name: locationName,
         numberOfFemales,
         numberOfMales,
         totalResidents

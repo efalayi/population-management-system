@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogTitle from '@material-ui/core/DialogTitle'
+import ModalTitle from './shared/modalTitle.jsx'
 import LocationForm from '../location/locationForm.jsx'
 import locationHelper from '../../../helpers/locationHelper'
 
@@ -76,9 +76,10 @@ class UpdateLocation extends React.PureComponent {
           Update
         </Button>
         <Dialog open={open} onClose={this.closeModal} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">
-            {`Update ${locationName}`}
-          </DialogTitle>
+          <ModalTitle
+            title={`Update ${locationName}`}
+            closeModal={this.closeModal}
+          />
           <DialogContent>
             <LocationForm
               location={locationUpdate}

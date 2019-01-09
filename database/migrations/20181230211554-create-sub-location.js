@@ -13,7 +13,12 @@ export default {
     },
     parentLocationId: {
       allowNull: false,
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      references: {
+        model: 'locations',
+        referenceKey: 'id',
+      },
+      onDelete: 'cascade'
     },
     createdAt: {
       allowNull: false,
