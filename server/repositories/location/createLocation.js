@@ -1,22 +1,13 @@
 import pushId from 'pushid'
 import errorHelper from '../../helpers/errorHelper'
 import numberHelper from '../../helpers/numberHelper'
-import createSubLocation from './createSubLocation'
+import createSubLocations from './subLocations/createSubLocations'
 
 const calculateTotalResidents = (numberOfFemales, numberOfMales) => {
   const totalResidents = numberHelper.converToInteger(
     numberOfFemales
   ) + numberHelper.converToInteger(numberOfMales)
   return totalResidents
-}
-
-const createSubLocations = async (db, parentLocationId, subLocations) => {
-  const locations = subLocations.split(',')
-  const subLocationsPromises = locations.map(
-    subLocation => createSubLocation(db, parentLocationId, subLocation)
-  )
-  const createdSubLocations = await Promise.all(subLocationsPromises)
-  return createdSubLocations
 }
 
 const createLocation = async (db, newLocation) => {
