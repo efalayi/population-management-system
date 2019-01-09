@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import PageTitle from '../components/pageTitle.jsx'
-import CreateLocationForm from '../components/createLocationForm.jsx'
+import LocationForm from '../components/location/locationForm.jsx'
 import Toaster from '../components/Toaster.jsx'
 import api from '../../api/api'
 
@@ -29,7 +29,7 @@ class CreateNewLocation extends PureComponent {
     }
   }
 
-  handleTextFieldChange = (event) => {
+  handleInputFieldChange = (event) => {
     const { location } = this.state
     this.setState({
       location: {
@@ -82,11 +82,12 @@ class CreateNewLocation extends PureComponent {
         <PageTitle
           title="Create a Location"
         />
-        <CreateLocationForm
+        <LocationForm
           location={location}
-          handleTextFieldChange={this.handleTextFieldChange}
+          handleInputFieldChange={this.handleInputFieldChange}
           handleSubmit={this.createLocation}
           errors={errors}
+          formButtonName="Create"
         />
         <Toaster
           open={toasterProps.open}

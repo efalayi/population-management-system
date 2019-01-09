@@ -11,8 +11,6 @@ import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import MailIcon from '@material-ui/icons/Mail'
 import appStyles from '../appStyles'
 import routes from '../../routes'
 
@@ -35,21 +33,27 @@ function AppSideBar(props) {
       </div>
       <Divider />
       <List>
-        {routes.map((route, index) => (
-          <Link
-            key={route.name}
-            to={{
-              pathname: `${route.path}`
-            }} 
-          >
-            <ListItem button>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={route.sidebarText} />
-            </ListItem>
-          </Link>
-        ))}
+        {
+          routes.map((route) => {
+            const SideBarIcon = route.sidebarIcon
+            return (
+              <Link
+                key={route.name}
+                to={{
+                  pathname: `${route.path}`
+                }}
+              >
+                <ListItem button>
+                  <ListItemIcon className={classes.sideBarIcon}>
+                    <SideBarIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={route.sidebarText} />
+                </ListItem>
+              </Link>
+            )
+          })
+        }
       </List>
-      <Divider />
     </Drawer>
   )
 }

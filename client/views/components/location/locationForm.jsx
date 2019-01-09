@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import classNames from 'classnames'
-import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import formStyles from './styles/formStyles'
+import InputField from '../InputField.jsx'
+import formStyles from '../styles/formStyles'
 
 const locationClientFields = [
   {
@@ -36,56 +35,60 @@ const fieldHasError = (error) => {
   return true
 }
 
-function CreateLocationForm(props) {
-  const { classes, errors, location, handleTextFieldChange, handleSubmit } = props
+function LocationForm(props) {
+  const { formButtonName, classes, errors, location, handleInputFieldChange, handleSubmit, showFormButton } = props
   return (
-    <form className={classes.container} noValidate autoComplete="off">
+    <form className={classes.formContainer} noValidate autoComplete="off">
       {
         locationClientFields.map(field => {
           const fieldName = field.name
           const hasError = fieldHasError(errors[fieldName])
           const errorText = hasError ? errors[fieldName] : ''
           return (
-            <TextField
+            <InputField
               key={fieldName}
-              id="outlined-full-width"
-              error={hasError}
+              hasError={hasError}
               label={field.label}
               type={field.type}
-              helperText={errorText}
-              fullWidth
-              className={classNames(classes.textField, classes.dense)}
-              margin="dense"
-              variant="outlined"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              onChange={handleTextFieldChange}
+              errorText={errorText}
+              handleInputFieldChange={handleInputFieldChange}
               name={fieldName}
               value={location[fieldName]}
             />
           )
         })
       }
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        size="large"
-        onClick={handleSubmit}
-      >
-        Create
-      </Button>
+      {
+        showFormButton && (
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            size="large"
+            onClick={handleSubmit}
+          >
+            {formButtonName}
+          </Button>
+        )
+      }
     </form>
   )
 }
 
-CreateLocationForm.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
-  errors: PropTypes.shape({}).isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  handleTextFieldChange: PropTypes.func.isRequired,
-  location: PropTypes.shape({}).isRequired,
+LocationForm.defaultProps = {
+  formButtonName: '',
+  handleSubmit: null,
+  showFormButton: true
 }
 
-export default withStyles(formStyles)(CreateLocationForm)
+LocationForm.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  errors: PropTypes.shape({}).isRequired,
+  formButtonName: PropTypes.string,
+  handleSubmit: PropTypes.func,
+  handleInputFieldChange: PropTypes.func.isRequired,
+  location: PropTypes.shape({}).isRequired,
+  showFormButton: PropTypes.bool
+}
+
+export default withStyles(formStyles)(LocationForm)
