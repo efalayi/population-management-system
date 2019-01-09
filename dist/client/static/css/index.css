@@ -1,0 +1,62 @@
+.form-modal {
+  width: 30rem; }
+
+#modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 1rem;
+  padding: 1rem 1rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+
+.locations {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+  .locations .location__card {
+    width: 300px;
+    margin-right: 1rem;
+    margin-bottom: 1rem; }
+    .locations .location__card:last-child {
+      margin-right: 0rem; }
+
+.location__card .location__card__header {
+  background-color: rgba(63, 81, 181, 0.9);
+  height: 6.5rem; }
+  .location__card .location__card__header span {
+    font-size: 1rem; }
+
+.location__card .location__card__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .location__card .location__card__description > div {
+    margin-bottom: 0.8rem; }
+    .location__card .location__card__description > div:last-child {
+      margin-bottom: 0rem; }
+
+.location__card .gender--breakdown {
+  display: flex; }
+  .location__card .gender--breakdown > div {
+    margin-right: 1.5rem; }
+    .location__card .gender--breakdown > div:last-child {
+      margin-right: 0rem; }
+    .location__card .gender--breakdown > div span {
+      margin-left: 1.2rem; }
+
+.root {
+  display: flex; }
+
+a {
+  text-decoration: none; }
+
+.page__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.page__title, h2.page__title {
+  margin-bottom: 2rem; }
+
+
+/*# sourceMappingURL=index.css.map*/
