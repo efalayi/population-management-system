@@ -2,21 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
+import locationHelper from '../../../helpers/locationHelper'
 
 function renderSubLocations(location) {
   const { subLocations } = location
   const hasSubLocations = subLocations.length > 0
   const renderSubLocations = hasSubLocations ? (
     <div>
-      {
-        subLocations.map(subLocation => (
-          <span
-            key={subLocation.id}
-          >
-            {subLocation.name}
-          </span>
-        ))
-      }
+      <span>
+        {locationHelper.getSubLocationsString(subLocations)}
+      </span>
     </div>
   ) : (<span>None</span>)
   return (

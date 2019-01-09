@@ -5,7 +5,7 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
+import ModalTitle from './shared/modalTitle.jsx'
 import locationHelper from '../../../helpers/locationHelper'
 
 class DeleteLocation extends React.PureComponent {
@@ -49,9 +49,10 @@ class DeleteLocation extends React.PureComponent {
           Delete
         </Button>
         <Dialog open={open} onClose={this.closeModal} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">
-            {`Delete ${selectedLocation.name}`}
-          </DialogTitle>
+          <ModalTitle
+            title={`Delete ${selectedLocation.name}`}
+            closeModal={this.closeModal}
+          />
           <DialogContent>
             <DialogContentText>
               Are you sure you want to delete this location?

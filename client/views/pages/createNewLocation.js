@@ -59,7 +59,13 @@ class CreateNewLocation extends PureComponent {
       toasterProps.open = true
       this.setState(() => (
         {
-          toasterProps
+          toasterProps,
+          location: {
+            name: '',
+            numberOfFemales: '',
+            numberOfMales: '',
+            subLocations: ''
+          }
         }
       ))
     }
