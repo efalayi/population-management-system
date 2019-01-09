@@ -1,7 +1,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/efalayi/population-management-system/badge.svg?branch=develop)](https://coveralls.io/github/efalayi/population-management-system?branch=develop)
 
 # population-management-system
-This is a population management system application with client and server side implementations
+The Population Management System is an application designed to keep track of population data. It contains a list of locations and the total residents in each location (which has also been broken down by gender). The application has both client and server side implementations.
+
 
 ##### Features
 - A user can create locations
