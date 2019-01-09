@@ -1,5 +1,5 @@
 const isValidName = (field, value) => {
-  const regex = /^[a-zA-Z ]{2,}$/
+  const regex = /^[a-zA-Z\s*]{2,}$/
   if (regex.test(value)) {
     return true
   }

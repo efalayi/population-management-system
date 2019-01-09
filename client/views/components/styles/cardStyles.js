@@ -7,6 +7,9 @@ const cardStyles = () => ({
   cardContent: {
     // padding: '0 30px'
   },
+  cardActions: {
+    justifyContent: 'flex-end'
+  },
 })
 
 export default cardStyles

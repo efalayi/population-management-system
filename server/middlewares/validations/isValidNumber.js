@@ -8,7 +8,6 @@ const isValidNumber = (field, fieldValue) => {
     return true
   }
   return `${fieldValue} is not a positive integer`
-  // return Number.isFinite(fieldValue)
 }
 
 export default isValidNumber

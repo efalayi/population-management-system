@@ -52,7 +52,8 @@ class LocationController {
     try {
       const location = await LocationRepository.updateLocation(db, locationId, locationUpdate)
       res.status(200).send({
-        location
+        location,
+        message: 'Location has been successfully updated'
       })
     } catch (error) {
       res.status(error.status).send({
@@ -66,7 +67,7 @@ class LocationController {
     try {
       const location = await LocationRepository.deleteLocation(db, locationId)
       res.status(200).send({
-        location,
+        deletedLocation: location,
         message: 'Location has been successfully deleted'
       })
     } catch (error) {

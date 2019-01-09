@@ -31,7 +31,7 @@ class Root extends Component {
           <AppHeader
             controlSidebar
             position="fixed"
-            title="Population Management System"
+            title="Population Tracker"
             iconlabel="Open Sidebar"
             open={open}
             openSidebar={this.openAppSideBar}

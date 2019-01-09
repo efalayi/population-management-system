@@ -10,7 +10,6 @@ const locationWithSubLocations = LocationFactory.build({
   subLocations: 'Ikeja, Maryland'
 })
 
-
 const server = request(app)
 describe('Locations endpoints', () => {
   describe('POST /api/v1/locations', () => {
@@ -129,6 +128,11 @@ describe('Locations endpoints', () => {
     it('should return an error message if location does not exist', (done) => {
       server
         .put('/api/v1/locations/invalidId')
+        .send({
+          name: 'Update',
+          numberOfFemales: 10,
+          numberOfMales: 10
+        })
         .end((error, response) => {
           expect(response.status).to.equal(404)
           expect(response.body).to.have.property('message', 'invalidId does not exist')
@@ -183,7 +187,7 @@ describe('Locations endpoints', () => {
         .get('/api/v1/locations/-1234')
         .end((error, response) => {
           expect(response.status).to.equal(400)
-          expect(response.body).not.to.have.property('location')
+          expect(response.body).not.to.have.property('deletedLocation')
           expect(response.body.message).to.equal('LocationId should be a string')
           done()
         })
@@ -194,7 +198,7 @@ describe('Locations endpoints', () => {
         .delete(`/api/v1/locations/${location2.id}`)
         .end((error, response) => {
           expect(response.status).to.equal(200)
-          expect(response.body).to.have.property('location')
+          expect(response.body).to.have.property('deletedLocation')
           expect(response.body).to.have.property('message', 'Location has been successfully deleted')
           done()
         })

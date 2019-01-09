@@ -2,6 +2,10 @@
   display: flex
 }
 
+a {
+  text-decoration: none;
+}
+
 .page__container {
   display: flex;
   flex-direction: column;
