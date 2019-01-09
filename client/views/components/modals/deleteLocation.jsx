@@ -50,7 +50,7 @@ class DeleteLocation extends React.PureComponent {
         </Button>
         <Dialog open={open} onClose={this.closeModal} aria-labelledby="form-dialog-title">
           <ModalTitle
-            title={`Delete ${selectedLocation.name}`}
+            title={`Delete ${selectedLocation.name}?`}
             closeModal={this.closeModal}
           />
           <DialogContent>
