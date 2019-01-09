@@ -1,0 +1,47 @@
+.locations {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .location__card {
+    width: 300px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    &:last-child {
+      margin-right: 0rem;
+    }
+  }
+}
+
+.location__card {
+  .location__card__header {
+    background-color: rgba($color: #3f51b5, $alpha: 0.9);
+    height: 6.5rem;
+    span {
+      font-size: 1rem;
+    }
+  }
+  .location__card__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    > div {
+      margin-bottom: 0.8rem;
+      &:last-child {
+        margin-bottom: 0rem;
+      }
+    }
+  }
+  .gender--breakdown {
+    display: flex;
+    > div {
+      margin-right: 1.5rem;
+      &:last-child {
+        margin-right: 0rem;
+      }
+      span {
+        margin-left: 1.2rem;
+      }
+    }
+  }
+}

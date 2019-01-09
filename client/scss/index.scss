@@ -1,0 +1,17 @@
+.root {
+  display: flex
+}
+
+a {
+  text-decoration: none;
+}
+
+.page__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page__title, h2.page__title {
+  margin-bottom: 2rem;
+}
